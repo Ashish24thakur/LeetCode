@@ -1,0 +1,13 @@
+import itertools
+
+def Combinations_Sum(candidates,target):
+    l1=[]
+    for i in range((target//min(candidates))+1):
+        k = list(itertools.combinations_with_replacement(candidates, i+1))
+        for i in k:
+            if sum(i)==target:
+                l1.append(list(i))
+    return l1
+candidates=list(map(int, input().split()))
+target_value = int(input("target value : "))
+print(Combinations_Sum(candidates, target_value))
