@@ -1,0 +1,13 @@
+import itertools
+def Combination(l):
+    f_l=[]
+    k = itertools.permutations(l)
+    for i in k:
+        f_l.append(list(i))
+    r_list = []
+    for i in f_l:
+        if i not in r_list:
+            r_list.append(i)
+    return r_list
+list1 = list(map(int,input().split()))
+print(Combination(list1))
