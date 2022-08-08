@@ -1,0 +1,9 @@
+import itertools
+def Combination(l):
+    f_l=[]
+    k = itertools.permutations(l)
+    for i in k:
+        f_l.append(list(i))
+    return f_l
+list1 = list(map(int,input().split()))
+print(Combination(list1))
