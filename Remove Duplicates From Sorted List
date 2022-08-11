@@ -1,0 +1,111 @@
+import java.util.Scanner;
+import java.util.concurrent.ThreadPoolExecutor.DiscardOldestPolicy;
+
+class NodeRemove{
+    int val;
+    NodeRemove next;
+
+    NodeRemove(int data)
+    {
+        val = data;
+        next = null;
+    }
+}
+
+public class Remove_Duplicate_From_Sorted_List {
+
+    static NodeRemove Head;
+
+    public void Insert(int data)
+    {
+        NodeRemove ob = new NodeRemove(data);
+        if(Head == null)
+        {
+            Head = ob;
+        }
+        else{
+
+            NodeRemove current = Head;
+            while(current.next != null)
+            {
+                current = current.next;
+            }
+            current.next = ob;
+        }
+    }
+
+    public void Display(NodeRemove head)
+    {
+        NodeRemove current = head;
+        while(current != null)
+        {
+            System.out.print(current.val + " ");
+            current = current.next;
+        }
+    }
+
+
+    public NodeRemove Delete_Duplicates(NodeRemove head)
+    {
+        if(head != null)
+        {
+
+        NodeRemove current,header;
+        current = head;
+
+        NodeRemove ob5 = new NodeRemove(current.val);
+        header = ob5;
+        int prev = current.val;
+        current = current.next;
+        
+
+        while(current != null)
+
+        {
+            if(current.val != prev)
+            {
+                prev = current.val;
+                NodeRemove ob = new NodeRemove(current.val);
+                if(header == null)
+                {
+                    header = ob;
+                }
+                else{
+
+                    NodeRemove curr1 = header;
+                    while(curr1.next != null)
+                    {
+                        curr1 = curr1.next;
+                    }
+                    curr1.next = ob;
+                }
+            }
+            current = current.next;
+
+        }
+        return header;
+    }
+    else{
+        return head;
+    }
+    
+    }
+
+    public static void main(String[] args) {
+
+        Remove_Duplicate_From_Sorted_List ob = new Remove_Duplicate_From_Sorted_List();
+        Scanner sc =  new Scanner(System.in);
+        int n = sc.nextInt();
+        for(int i=0;i<n;i++)
+        {
+            ob.Insert(sc.nextInt());
+        }
+        ob.Display(Head);
+        NodeRemove h = ob.Delete_Duplicates(Head);
+        System.out.println("\nafter removing............................");
+        ob.Display(h);
+    }
+
+
+
+}
