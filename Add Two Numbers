@@ -1,0 +1,273 @@
+import java.util.Scanner;
+
+class NodeAdd{
+
+    int data;
+    NodeAdd next;
+
+    NodeAdd(int data)
+    {
+        this.data = data;
+        this.next = null;
+    }
+
+}
+
+public class Add_Two_Numbers {
+    
+    public static NodeAdd Head1 , Head2;
+
+    public static NodeAdd insert(NodeAdd head, int data)
+    {
+        NodeAdd ob = new NodeAdd(data);
+ 
+        if(head == null)
+        {
+            head = ob;
+            ob.next = null;
+        }
+        else{
+            NodeAdd current = head;
+
+            while(current.next != null)
+            {
+                current = current.next;
+            }
+            current.next = ob;
+        }
+        return head;
+
+    }
+    public static void display(NodeAdd head)
+    {
+        NodeAdd current = head;
+        while(current != null)
+        {
+            System.out.print(current.data + " ");
+            current = current.next;
+        }
+    }
+
+    public static NodeAdd Add(NodeAdd l1 , NodeAdd l2)
+    {
+        NodeAdd lcurrent1 = l1;
+        NodeAdd lcurrent2 = l2;
+        int len_l1=0;
+        int len_l2 = 0;
+        while(lcurrent1 != null)
+        {
+            len_l1 = len_l1 + 1;
+            lcurrent1 = lcurrent1.next;
+        }
+        while(lcurrent2 != null)
+        {
+            len_l2 = len_l2 + 1;
+            lcurrent2 = lcurrent2.next;
+        }
+        if (len_l1 > len_l2)
+        {
+        
+            NodeAdd current1 = l1;
+            NodeAdd current2 = l2;
+            int sum = 0;
+            while(current1.next != null && current2.next != null )
+            {
+                int value = current1.data + current2.data + sum;
+                if(value >= 10)
+                {
+                    current1.data = value%10;
+                    sum = value/10;
+                }
+                else{
+                    current1.data = value;
+                    sum = 0;
+                }
+            
+                current1 = current1.next;
+                current2 = current2.next;
+            }
+            int l_temp = current1.data + current2.data +sum;
+            if(l_temp >= 10)
+            {
+                current1.data = l_temp % 10;
+                sum = l_temp / 10;
+            }
+            else{
+                current1.data = l_temp;
+                sum = 0;
+            }
+            current1 = current1.next;
+            while(current1.next != null)
+            {
+                int temp = (current1.data + sum);
+                if (temp >= 10)
+                {
+                    
+                    current1.data = temp % 10;
+                    sum = temp/10;
+                }
+                else{
+                    current1.data = temp;
+                    sum = 0;
+                    
+                }
+                current1 = current1.next;
+            }
+            int l2_temp = current1.data +sum;
+            if(l2_temp >= 10)
+            {
+                current1.data = l2_temp % 10;
+                sum = l2_temp / 10;
+            }
+            else{
+                current1.data = l2_temp;
+                sum = 0;
+            }
+            System.out.println("value of sum : " +  sum);
+            if(sum>0)
+            {
+                NodeAdd ob = new NodeAdd(sum);
+
+                current1.next = ob;
+                ob.next = null;
+            }
+            return l1;
+        }
+        
+        else if(len_l1 < len_l2){
+            
+            NodeAdd current1 = l1;
+            NodeAdd current2 = l2;
+            int sum = 0;
+            while(current1.next != null && current2.next != null )
+            {
+                int value = current1.data + current2.data + sum;
+                if(value >= 10)
+                {
+                    current2.data = value%10;
+                    sum = value/10;
+                }
+                else{
+                    current2.data = value;
+                    sum = 0;
+                }
+            
+                current1 = current1.next;
+                current2 = current2.next;
+            }
+            int l_temp = current1.data + current2.data +sum;
+            if(l_temp >= 10)
+            {
+                current2.data = l_temp % 10;
+                sum = l_temp / 10;
+            }
+            else{
+                current2.data = l_temp;
+                sum = 0;
+            }
+            current2 = current2.next;
+            while(current2.next != null)
+            {
+                int temp = (current2.data + sum);
+                if (temp >= 10)
+                {    
+                    current2.data = temp % 10;
+                    sum = temp/10;
+                }
+                else{
+                    current2.data = temp;
+                    sum = 0;
+                    
+                }
+                current2 = current2.next;
+            
+            }
+            int l2_temp = current2.data +sum;
+            if(l2_temp >= 10)
+            {
+                current2.data = l2_temp % 10;
+                sum = l2_temp / 10;
+            }
+            else{
+                current2.data = l2_temp;
+                sum = 0;
+            }
+            if(sum>0)
+            {
+                NodeAdd ob = new NodeAdd(sum);
+
+                current2.next = ob;
+                ob.next = null;
+            }
+            return l2;
+        }
+        else{
+
+            NodeAdd current1 = l1;
+            NodeAdd current2 = l2;
+            int sum = 0;
+            while(current1.next != null && current2.next != null )
+            {
+                int value = current1.data + current2.data + sum;
+                if(value >= 10)
+                {
+                    current2.data = value%10;
+                    sum = value/10;
+                }
+                else{
+                    current2.data = value;
+                    sum = 0;
+                }
+            
+                current1 = current1.next;
+                current2 = current2.next;
+            }
+            int l_temp = current1.data + current2.data +sum;
+            if(l_temp >= 10)
+            {
+                current2.data = l_temp % 10;
+                sum = l_temp / 10;
+            }
+            else{
+                current2.data = l_temp;
+                sum = 0;
+            }
+            if(sum>0)
+            {
+                NodeAdd ob = new NodeAdd(sum);
+
+                current2.next = ob;
+                ob.next = null;
+            }
+            return l2;
+        }
+    }
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the first list length : ");
+        int n = sc.nextInt();
+        for (int i = 0; i < n; i++) {
+           Head1 =  insert(Head1, sc.nextInt());
+        }
+        System.out.println("Enter the second list length : ");
+        int m = sc.nextInt();
+        for(int i=0;i<m;i++)
+        {
+            Head2 = insert(Head2, sc.nextInt());
+        }
+
+        System.out.println("list1 : ");
+        display(Head1);
+        System.out.println("list 2 : ");
+        display(Head2);
+
+        NodeAdd frji;
+
+        frji = Add(Head1, Head2);
+        System.out.println("after adding ....................... ");
+        display(frji);
+
+    }
+
+}
