@@ -1,0 +1,65 @@
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Minimum_Index_Sum_Of_Two_List {
+
+
+        public String[] FindRestaurant(String list1[], String list2[])
+        {
+            
+            ArrayList<String> val = new ArrayList<>();
+            int min = 10000;
+            for(int i=0;i<list1.length;i++)
+                {
+                    for(int j=0;j<list2.length;j++)
+                    {
+                        if(list1[i].equals(list2[j]))
+                        {
+                            if( (i+j) < min)
+                            {   
+                                min = i+j; 
+                            }
+                                
+                        }
+                             
+                     }
+                 }
+            for(int i=0;i<list1.length;i++)
+            {
+                for(int j=0;j<list2.length;j++)
+                {
+                    if(list1[i].equals(list2[j]))
+                    {
+                        if( (i+j) == min)
+                        {
+                            val.add(list2[j]);
+                        }
+                    }
+                }
+            }
+                
+            String res[] = new String[val.size()];
+            for(int i=0;i<val.size();i++)
+            {
+                res[i] = val.get(i);
+            }
+    
+            return res;
+           
+        }
+
+
+    public static void main(String[] args) {
+        String arr[] = {"Shogun","Tapioca Express","Burger King","KFC"};
+        String arr2[] = {"KFC","Shogun","Burger King"};
+        Minimum_Index_Sum_Of_Two_List ob = new Minimum_Index_Sum_Of_Two_List();
+        String f_arr[] = new String[4];
+        f_arr = ob.FindRestaurant(arr,arr2);
+        for(int i=0;i<1;i++)
+        {
+            System.out.println(f_arr[i]);
+        }
+    }
+    
+}
+
