@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Reverse_Integer {
+
+    public int Reverse(int x)
+    {
+
+        // FIRST METHOD AND EFFICIENCY IS VERY HIGH..................
+
+        long rev = 0;
+        while(x!=0)
+        {
+            rev = rev * 10 + (x%10);
+            System.out.println("revsres............." + rev);
+            x = x/10;
+        }
+        if(rev>Integer.MAX_VALUE || rev < Integer.MIN_VALUE)
+        {
+            return 0;
+        }
+        return (int)rev;
+
+        //SECOND METHOD..........................................
+
+        boolean isNegative = x < 0;
+        if(isNegative)
+        {
+            x *= -1;
+        }
+        long rev = 0;
+        while(x>0)
+        {
+            rev = rev * 10 + (x%10);
+            x = x/10;
+        }
+        if(rev>Integer.MAX_VALUE || rev < Integer.MIN_VALUE)
+        {
+            return 0;
+        }
+        return isNegative? (int) rev * -1 : (int)rev;
+
+    }
+        
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Reverse_Integer ob = new Reverse_Integer();
+        System.out.println(ob.Reverse(n));
+    }
+    
+}
