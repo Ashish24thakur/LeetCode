@@ -1,0 +1,28 @@
+import java.util.Scanner;
+
+public class Factorial_Trailing_Zero {
+
+
+    public int Trailing_Zero(int n)
+    {
+        int sum = 0;
+        while(n>0)
+        {
+
+        //  here 5! - 120 , 5 factorial has 1 zero so we will divide the value n while n>0 and add the value of n/5 in sum. 
+
+            n = n / 5;
+            sum += n;
+        }
+        return sum;
+    }
+
+    public static void main(String[] args) {
+        
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        Factorial_Trailing_Zero ob = new Factorial_Trailing_Zero();
+        System.out.println(ob.Trailing_Zero(n));
+    }
+    
+}
