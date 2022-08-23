@@ -1,0 +1,38 @@
+import java.util.Scanner;
+
+public class Average_Salary_Excluding_MinimumAndMaximum {
+
+    public double Average_Salary(int arr[])
+    {
+        int min = Integer.MAX_VALUE;
+        int max = Integer.MIN_VALUE;
+
+        for(int i=0;i<arr.length;i++)
+        {
+            min = Math.min(min, arr[i]);
+            max = Math.max(max, arr[i]);
+        }
+        double sum = 0;
+        for(int i=0;i<arr.length;i++)
+        {
+            if(arr[i] != min && arr[i] != max)
+            {
+                sum = sum + arr[i];
+            }
+        }
+        return sum/(arr.length - 2);
+    }
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        int arr[] = new int[n];
+        for(int i=0;i<n;i++)
+        {
+            arr[i] = sc.nextInt();
+        }
+        Average_Salary_Excluding_MinimumAndMaximum ob = new Average_Salary_Excluding_MinimumAndMaximum();
+        System.out.println(ob.Average_Salary(arr));
+        
+    }
+}
